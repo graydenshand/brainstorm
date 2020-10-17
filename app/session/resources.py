@@ -12,17 +12,22 @@ class Sessions(Resource):
         else:
             # log IP address of all visitors to get an appx. count of unique users in each session
             session.addIPAddress(request.remote_addr)
-            schema = SessionSchema()
+            schema = SessionSchema(only=['id', 'title', 'description', 'created_at', 'duration', 'posts'])
             return schema.dump(session), 200
 
     def post(self):
         data = request.get_json()
+        session = Session()
         if any([key not in data for key in Session.requiredFields]):
             return {'error': f'Missing required fields. Request must include: {Session.requiredFields}'}, 400
+        if any([key not in session.fields() for key in data.keys()]):
+            return {'error': f"Unrecognized key, allowed keys: {session.fields()}"}
         else:
             session = Session(**data)
             session.create()
-            return {'session_link': f'{request.url_root}{session.id}'}, 201
+
+            return {'session_id': session.id}, 201
+            
 
     def put(self, session_id):
         session = Session().get(session_id)
@@ -30,13 +35,15 @@ class Sessions(Resource):
             return {'error': 'Not found'}, 404
         else:
             data = request.get_json()
+            if any([key not in session.fields() for key in data.keys()]):
+                return {'error': f"Unrecognized key, allowed keys: {session.fields()}"}
             for k, v in data.items():
                 try:
                     setattr(session, k, v)
-                except AttributeError:
+                except Exception:
                     return {'error': f'Cannot update field: {k}'}, 400
             session.update()
-            schema = SessionSchema()
+            schema = SessionSchema(only=['id', 'title', 'description', 'created_at', 'duration', 'posts'])
             return schema.dump(session), 200
 
     def delete(self, session_id):

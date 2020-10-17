@@ -1,0 +1,13 @@
+<!-- TEMPLATE FOR RESULTS EMAIL -->
+<h1>{{ session.title }}</h1>
+<p>{{ session.description }}</p>
+<br />
+{% for post in session.posts %}
+<p>{{ post }}</p>
+{% if loop.index < session.posts|length %}
+<hr />
+{% endif %}
+{% endfor %}
+
+<br />
+<p>Thanks for using Timed Brainstorm!</p>

@@ -1,9 +1,7 @@
 #!/bin/env python
-from app import create_app
+from app import create_app, socketio
 import os
 from app.config import DevelopmentConfig, ProductionConfig
-
-# print(f"REDIS --- {os.environ.get("REDIS_URL")}")
 
 if os.environ.get("ENVIRONMENT") == "DEV":
 	app = create_app(debug=True, config=DevelopmentConfig)
@@ -11,4 +9,5 @@ else:
 	app = create_app(config=ProductionConfig)
 
 if __name__ =='__main__':
-	app.run(host='0.0.0.0')
+	debug = os.environ.get('FLASK_DEBUG', 0) == "1"
+	socketio.run(app, host='0.0.0.0', port=os.environ.get('PORT', 5000), debug=debug)
