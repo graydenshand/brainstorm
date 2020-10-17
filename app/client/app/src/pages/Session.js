@@ -102,7 +102,7 @@ class Session extends React.Component {
       method: 'POST',
       body: this.state.emailFormInput
     }
-    const response = await fetch(process.env.REACT_APP_API_URL + "/" + this.state.id + "/email", opts);
+    const response = await fetch(process.env.REACT_APP_API_URL + "/session/" + this.state.id + "/email", opts);
     return response.json();
   }
 
@@ -127,8 +127,7 @@ class Session extends React.Component {
   loadSession() {
     this.setState({startLoad: true, endLoad: false})
     let session_id = this.props.match.params.session_id;
-    console.log(process.env.REACT_APP_API_URL)
-    fetch(`${process.env.REACT_APP_API_URL}/${session_id}`)
+    fetch(`${process.env.REACT_APP_API_URL}/session/${session_id}`)
       .then(response => response.json())
       .then(data => {
         console.log(data);

@@ -13,6 +13,7 @@ services:
       - FLASK_DEBUG=1
       - MAIL_USERNAME=${MAIL_USERNAME}
       - MAIL_PASSWORD=${MAIL_PASSWORD}
+      - REACT_APP_API_URL=${REACT_APP_API_URL}
     depends_on:
       - db
     tty: true

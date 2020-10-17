@@ -2,7 +2,7 @@ from flask import Blueprint, current_app
 from flask_restful import Api
 
 
-session = Blueprint('auth', __name__)
+session = Blueprint('auth', __name__, url_prefix="/session")
 api = Api(session)
 
 

@@ -60,7 +60,7 @@ export default class Home extends React.Component {
         description: this.state.description
       })
     }
-    const response = await fetch(process.env.REACT_APP_API_URL, opts);
+    const response = await fetch(process.env.REACT_APP_API_URL + "/session", opts);
     return response.json();
   }
 
@@ -72,7 +72,7 @@ export default class Home extends React.Component {
       method: 'POST',
       body: this.state.email
     }
-    const response = await fetch(process.env.REACT_APP_API_URL + "/" + session_id + "/email", opts);
+    const response = await fetch(process.env.REACT_APP_API_URL + "/session/" + session_id + "/email", opts);
     return response.json();
   }
 

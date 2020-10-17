@@ -7,4 +7,4 @@ import os
 def catch_all(path):
 	if path and path != "" and os.path.exists(client.static_folder + '/' + path):
 		return send_from_directory(client.static_folder, path)
-	return render_template("index.html", **params)
+	return render_template("index.html")
