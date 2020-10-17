@@ -60,7 +60,7 @@ export default class Home extends React.Component {
         description: this.state.description
       })
     }
-    const response = await fetch(process.env.REACT_APP_API_URL + "/session", opts);
+    const response = await fetch(process.env.REACT_APP_API_URL + "/session/", opts);
     return response.json();
   }
 
