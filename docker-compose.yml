@@ -39,7 +39,7 @@ services:
     build: ./
     volumes:
       - './:/home/app'
-    command: ["rqscheduler", "--host", "db", "--port", "6379"]
+    command: ["python", "scheduler.py"]
     environment:
       - REDIS_URL=${REDIS_URL}
       - FLASK_APP=main.py
