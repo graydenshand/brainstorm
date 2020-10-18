@@ -39,7 +39,7 @@ services:
     build: ./
     volumes:
       - './:/home/app'
-    command: ["python", "scheduler.py", "-i", "15", "-v"]
+    command: ["python", "scheduler.py", "-i", "15"]
     environment:
       - REDIS_URL=${REDIS_URL}
       - FLASK_APP=main.py
