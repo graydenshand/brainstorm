@@ -15,12 +15,12 @@ def send_test_message():
 def send_results(session):
     # for each email, send session data
     with mail.connect() as conn:
-        for email in session.emails:
+        for email in session['emails']:
             print(f"Sending results to {email}")
             html = render_template('results.html', session=session)
             text = f'Your brainstorm results are in.\n'
-            text += f'{session.title}\n {session.description}'
-            text += '----\n'.join([post for post in session.posts])
+            text += f"{session['title']}\n {session['description']}"
+            text += '----\n'.join([post for post in session['posts']])
             text += 'Thanks for using Timed Brainstorm!'
             subject = "Your brainstorm results"
             sender = ("Grayden", "graydenshand@gmail.com")

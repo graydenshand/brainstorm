@@ -27,7 +27,7 @@ class Sessions(Resource):
             session.create()
 
             return {'session_id': session.id}, 201
-            
+
 
     def put(self, session_id):
         session = Session().get(session_id)

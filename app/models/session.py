@@ -3,7 +3,6 @@ from datetime import datetime, timedelta
 from uuid import uuid4
 from marshmallow import Schema, fields
 import app.email as email
-from app.tasks import closeSession
 
 class Session:
     """
@@ -170,8 +169,9 @@ class Session:
         redis.expire(f'session::{self.id}', self.timeToEnd().seconds + (500))
 
         # enqueue a job to close the session at the session end time
-        scheduler.enqueue_in(timedelta(seconds=self.duration), closeSession, self)
+        scheduler.enqueue_in(timedelta(seconds=self.duration), closeSession, self.id)
 
+        print(f"Session created: {self.id}")
 
     def update(self):
         """
@@ -220,11 +220,13 @@ class Session:
         redis.delete(f'session::{self.id}::ip_addresses')
         redis.delete(f'session::{self.id}')
         self.__init__()
+        print("Session deleted")
 
     def close(self):
         """
         Send final results and delete the session
         """
+        print(f"Closing session {self.id}")
         # Save aggregate stats about the session
         redis.rpush('session::stats::duration', self.duration)
         redis.rpush('session::stats::emails', len(self.emails))
@@ -291,8 +293,18 @@ class Session:
         """
         Send the final results to all registered email addresses
         """
-        email.send_results(self)
+        email.send_results(self.toDict())
 
+
+def closeSession(session_id):
+    """
+    Close a session with this id
+
+    This function is defined outside of the scope of the Session class in order to pass it to redis queue
+    """
+    session = Session().get(session_id)
+    if session is not None:
+        session.close()
 
 class SessionSchema(Schema):
     id = fields.Str()

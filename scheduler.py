@@ -19,7 +19,7 @@ def main():
     parser.add_argument('-P', '--password', default=os.environ.get('RQ_REDIS_PASSWORD'), help="Redis password")
     parser.add_argument('--verbose', '-v', action='store_true', default=False, help='Show more output')
     parser.add_argument('--quiet', action='store_true', default=False, help='Show less output')
-    parser.add_argument('--url', '-u', default=os.environ.get('RQ_REDIS_URL')
+    parser.add_argument('--url', '-u', default=os.environ.get('REDIS_URL')
         , help='URL describing Redis connection details. \
             Overrides other connection arguments if supplied.')
     parser.add_argument('-i', '--interval', default=60.0, type=float
@@ -41,8 +41,8 @@ def main():
         with open(filename, 'w') as f:
             f.write(pid)
 
-    if os.environ.get('REDIS_URL') is not None:
-        connection = Redis.from_url(os.environ.get('REDIS_URL'))
+    if args.url is not None:
+        connection = Redis.from_url(args.url)
     else:
         connection = Redis(args.host, args.port, args.db, args.password)
 
