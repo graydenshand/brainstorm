@@ -16,6 +16,7 @@ def send_results(session):
     # for each email, send session data
     with mail.connect() as conn:
         for email in session.emails:
+            print(f"Sending results to {email}")
             html = render_template('results.html', session=session)
             text = f'Your brainstorm results are in.\n'
             text += f'{session.title}\n {session.description}'
