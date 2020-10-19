@@ -172,7 +172,7 @@ export default class Home extends React.Component {
               <label for="emailInput" className="text-lg font-semibold ">Email</label>
               <p className="text-sm text-green-500 hover:text-green-800 ml-2 cursor-pointer">Privacy policy</p>
             </div>
-            <input type="text" id="emailInput" value={this.state.email} placeholder="bob@example.com" onChange={this.handleEmailChange} className="w-full border border-gray-500 rounded py-1 px-2 focus:border-white  outline-none focus:shadow-outline" />
+            <input type="text" id="emailInput" name="email" value={this.state.email} placeholder="bob@example.com" onChange={this.handleEmailChange} className="w-full border border-gray-500 rounded py-1 px-2 focus:border-white  outline-none focus:shadow-outline" />
             <p className="text-sm">We'll email you the results</p>
             <p className="text-sm text-red-500">{this.state.emailError}</p>
           </div>
