@@ -4,7 +4,7 @@ WORKDIR /home/app
 # WORKDIR /home # for gunicorn
 # INSTALL PACKAGES
 
-RUN python3 -m pip install flask flask-restful flask-mail flask-cors redis gunicorn rq rq-scheduler  marshmallow eventlet flask-socketio
+RUN python3 -m pip install flask flask-restful flask-mail flask-cors redis gunicorn rq rq-scheduler  marshmallow eventlet flask-socketio flask-sslify
 
 COPY ./ /home/app
 

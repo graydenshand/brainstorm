@@ -8,6 +8,7 @@ import os
 from flask_mail import Mail
 from flask_cors import CORS
 from flask_socketio import SocketIO
+from flask_sslify import SSLify
 
 # Initialize services
 redis = Redis().from_url(os.environ.get("REDIS_URL"))
@@ -30,6 +31,7 @@ def create_app(debug=False, config=ProductionConfig):
 		mail.init_app(app)
 		cors.init_app(app, resources={r"/*": {"origins": ["http://localhost:3000"]}})
 		socketio.init_app(app)
+		sslify = SSLify(app)
 
 		# Register Blueprints
 		from .session import session as session_blueprint
