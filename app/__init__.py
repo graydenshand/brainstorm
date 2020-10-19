@@ -43,13 +43,13 @@ def create_app(debug=False, config=ProductionConfig):
 
 		# Set up shell context
 		from .models.session import Session
-		from .email import send_test_message
+		import app.email as email
 		@app.shell_context_processor
 		def make_shell_context():
 			return {
 				"Session": Session,
 				"scheduler": scheduler,
-				"send_test_message": send_test_message
+				"email": email
 			}
 
 
