@@ -2,6 +2,8 @@ from flask_mail import Message
 from flask import render_template
 from app import mail
 
+sender = ("Timed Brainstorm", "hello@timedbrainstorm.com")
+
 def build_message(subject, sender, recipients, text_body, html_body):
     msg = Message(subject, sender=sender, recipients=recipients)
     msg.body = text_body
@@ -9,7 +11,7 @@ def build_message(subject, sender, recipients, text_body, html_body):
     return msg
 
 def send_test_message():
-    msg = build_message('test', ('Grayden', 'graydenshand@gmail.com'), ['shandgp@clarkson.edu'], 'test', "<p>test</p>")
+    msg = build_message('test', sender, ['shandgp@clarkson.edu'], 'test', "<p>test</p>")
     mail.send(msg)
 
 def send_results(session):
@@ -23,6 +25,5 @@ def send_results(session):
             text += '----\n'.join([post for post in session['posts']])
             text += 'Thanks for using Timed Brainstorm!'
             subject = "Your brainstorm results"
-            sender = ("Grayden", "graydenshand@gmail.com")
             msg = build_message(subject, sender, [email], text, html)
             conn.send(msg)
