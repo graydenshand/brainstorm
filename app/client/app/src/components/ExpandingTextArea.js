@@ -8,6 +8,7 @@ export default class ExpandingTextArea extends React.Component {
     this.ref = React.createRef();
     this.resize = this.resize.bind(this);
     this.delayedResize = this.delayedResize.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
   resize() {
@@ -19,6 +20,16 @@ export default class ExpandingTextArea extends React.Component {
   delayedResize() {
     window.setTimeout(this.resize, 0);
   }
+
+  handleKeyDown(e) {
+    // cmd+enter
+    if (e.keyCode == 13 && e.metaKey && this.props.submitForm) {
+  		this.props.submitForm(e);
+  	} else {
+      this.delayedResize();
+    }
+  }
+
 
   componentDidUpdate() {
     // resize after updating props
@@ -35,7 +46,7 @@ export default class ExpandingTextArea extends React.Component {
         <textarea
           {...this.props}
           ref={this.ref}
-          onKeyDown={this.delayedResize}
+          onKeyDown={this.handleKeyDown}
           onCut={this.delayedResize}
           onPaste={this.delayedResize}
           onDrop={this.delayedResize}

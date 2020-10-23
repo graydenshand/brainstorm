@@ -177,10 +177,10 @@ export default class Home extends React.Component {
               <p className="leading-tight font-semibold ">Please note, you cannot change these fields after your session has started.</p>
             </div>
             <div className="flex justify-center mt-8">
-              <button className="w-full sm:w-auto bg-green-500 px-8 py-4 mb-10 md:mb-0 text-lg tracking-wide font-bold text-white  hover:bg-green-700 transition-colors duration-400 rounded">Start Session</button>
+              <button className="w-full sm:w-auto bg-green-700 px-8 py-4 mb-10 md:mb-0 text-lg tracking-wide font-bold text-white  hover:bg-green-500 transition-colors duration-400 rounded">Start Session</button>
             </div>
           </form>
-          <div className="md:col-span-2 md:col-start-1 bg-green-500 text-green-50 md:grid md:grid-cols-2 p-5 rounded-l">
+          <div className="md:col-span-2 md:col-start-1 bg-green-700 text-green-50 md:grid md:grid-cols-2 p-5 rounded-l">
             <div className="px-2 pt-10 md:pt-0">
               <p className="text-xl mb-3 font-semi-bold">Welcome to <strong>Timed Brainstorm,</strong> a free and open source tool for collaboratively generating ideas.</p>
               <p className="text-xl mb-3 font-semi-bold">You can start a new brainstorming session using the form on this page.</p>

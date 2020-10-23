@@ -216,9 +216,9 @@ class Session extends React.Component {
                 <p className="mt-1">{this.state.description}</p>
               </div>
               <div className="mt-5">
-                <ExpandingTextArea id="postInput" minHeight="67px" handleChange={this.handleNewPostChange} text={this.state.newPostText} errorText={this.state.newPostTextError} placeholder="Eureka!" name="post" className="w-full border border-gray-500 rounded py-1 px-2 mb-3 focus:border-white outline-none focus:shadow-outline"></ExpandingTextArea>
+                <ExpandingTextArea id="postInput" minHeight="67px" handleChange={this.handleNewPostChange} submitForm={this.addPost} text={this.state.newPostText} errorText={this.state.newPostTextError} placeholder="Eureka!" name="post" className="w-full border border-gray-500 rounded py-1 px-2 mb-3 focus:border-white outline-none focus:shadow-outline"></ExpandingTextArea>
                 <div className="flex justify-end">
-                  <button onClick={this.addPost} className="w-full sm:w-auto bg-green-500 px-3 py-2 text-base font-semibold text-white hover:bg-green-700 rounded">Add Post</button>
+                  <button onClick={this.addPost} className="w-full sm:w-auto bg-green-700 px-3 py-2 text-base font-semibold text-white hover:bg-green-500 rounded">Add Post</button>
                 </div>
               </div>
 
