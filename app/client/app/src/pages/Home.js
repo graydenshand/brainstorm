@@ -131,11 +131,12 @@ export default class Home extends React.Component {
     dateMax = dateMax.toISOString().split('T')[0]
 
     return (
-      <div className="bg-gray-800 min-h-screen text-green-800 flex justify-center items-center">
-        <div className="max-w-screen-xl mx-auto md:grid md:grid-cols-3 md:grid-flow-col-dense bg-white rounded">
-          <form className="bg-gray-100 p-5 md:col-start-3 rounded-r py-10 md:py-5" onSubmit={this.handleSubmit}>
-            <h1 className="text-3xl mb-4 text-green-700 font-black leading-none">
-              Start a new <br/>brainstorming session
+      <div className="min-h-screen bg-gray-100 text-green-800 flex justify-center items-start">
+        <div className="max-w-screen-sm mx-auto rounded">
+          <h1 className="max-w-screen-md mx-auto text-center font-semibold py-10 text-green-500 uppercase leading-none tracking-wide">Timed Brainstorm</h1>
+          <form className="p-5 rounded-r" onSubmit={this.handleSubmit}>
+            <h1 className="text-3xl mb-4 font-black leading-none">
+              Start a new brainstorming session
             </h1>
             <div>
               <label for="titleInput" className="text-lg font-semibold" >Title</label>
@@ -174,26 +175,12 @@ export default class Home extends React.Component {
             </div>
             <div className="flex items-center my-5 text-yellow-600 p-2 border border-yellow-500 bg-yellow-50 rounded">
               <svg class="w-6 h-6 mr-2 flex-shrink-0 flex-grow-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-              <p className="leading-tight font-semibold ">Please note, you cannot change these fields after your session has started.</p>
+              <p className="leading-tight text-sm font-semibold ">Please note, you cannot change these fields after your session has started.</p>
             </div>
             <div className="flex justify-center mt-8">
-              <button className="w-full sm:w-auto bg-green-700 px-8 py-4 mb-10 md:mb-0 text-lg tracking-wide font-bold text-white  hover:bg-green-500 transition-colors duration-400 rounded">Start Session</button>
+              <button className="w-full sm:w-auto bg-green-500 px-8 py-4 mb-10 md:mb-0 text-lg tracking-wide font-bold text-white  hover:bg-green-700 transition-colors duration-400 rounded">Start Session</button>
             </div>
           </form>
-          <div className="md:col-span-2 md:col-start-1 bg-green-700 text-green-50 md:grid md:grid-cols-2 p-5 rounded-l">
-            <div className="px-2 pt-10 md:pt-0">
-              <p className="text-xl mb-3 font-semi-bold">Welcome to <strong>Timed Brainstorm,</strong> a free and open source tool for collaboratively generating ideas.</p>
-              <p className="text-xl mb-3 font-semi-bold">You can start a new brainstorming session using the form on this page.</p>
-              <p className="text-xl mb-3 font-semi-bold">Once you've created your session, you can <strong>invite others to the page by sharing the session URL.</strong></p>
-              <p className="text-xl mb-3 font-semi-bold"><strong>Users post anonymously.</strong> This helps generate more ideas faster. However, it also means you must be careful about sharing your session link. Anyone with the link can anonymously contribute to your session.</p>
-              <p className="text-xl mb-3 font-semi-bold">After your session has ended, <strong>we'll send you an email with the results for your records. Then, all of the data from your session is erased&mdash;</strong>we only retain statistics on session such as the number of ideas generated.</p>
-            </div>
-            <div className="px-2">
-              <p className="text-xl mb-3 font-semi-bold">Thanks for visiting the site. If you find it useful, please donate to charity and share it with your friends.</p>
-              <p className="text-xl mb-3 font-semi-bold">You can view the code for this app on <a href="https://github.com/graydenshand/brainstorm" target="_blank" className="underline">GitHub</a>.</p>
-              <p className="text-xl mb-3 font-semi-bold">And you can email me feedback or bug reports at <a href="mailto:hello@timedbrainstorm.com" target="_blank" className="underline">hello@timedbrainstorm.com</a>.</p>
-            </div>
-          </div>
         </div>
       </div>
     )
